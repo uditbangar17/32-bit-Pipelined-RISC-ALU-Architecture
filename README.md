@@ -50,3 +50,23 @@ The ALU testbench validates arithmetic and logical operations across a wide rang
 
 The pipeline testbench verifies correct instruction flow across all five stages, including the handling of data hazards and forwarding scenarios.  
 Simulation results confirm correct functionality, proper pipeline control, and stable operation under dependent instruction sequences.
+
+
+## Learning Outcomes
+
+This project strengthened my understanding of:
+- RTL-based hardware design using Verilog HDL  
+- Arithmetic unit design and adder architecture trade-offs  
+- Pipelined processor microarchitecture  
+- Pipeline hazards, stalling, and data forwarding mechanisms  
+- Verification-driven hardware development  
+
+The project provided practical exposure to translating architectural concepts into synthesizable RTL implementations.
+
+## Future Work
+
+Possible extensions of this work include:
+- Control hazard handling and branch prediction  
+- Clock gating and low-power optimization  
+- Cache integration and memory hierarchy exploration  
+- ASIC synthesis and physical design flow
