@@ -28,3 +28,16 @@ To minimize performance degradation caused by stalls, a *data forwarding (bypass
 This unit forwards results from later pipeline stages (EX/MEM and MEM/WB) directly to the Execute stage, reducing unnecessary pipeline stalls and improving instruction throughput.
 
 The combined use of hazard detection and forwarding enables the processor to maintain correctness while achieving higher performance through effective instruction-level parallelism.
+
+
+## ALU Design and Adder Architecture Comparison
+
+The 32-bit ALU is designed as a *modular and parameterized unit*, supporting arithmetic, logical, comparison, and shift operations.  
+To study performance trade-offs, multiple adder architectures were implemented and evaluated:
+
+- *Ripple Carry Adder (RCA)* – Simple and area-efficient, but with higher propagation delay  
+- *Carry Look-Ahead Adder (CLA)* – Reduces carry propagation delay using parallel carry computation  
+- *Hierarchical 32-bit CLA* – Built using 4-bit true CLA blocks to balance speed and complexity  
+
+Comparative analysis of these adders highlights the impact of carry propagation on critical path delay and overall processor performance.  
+The final ALU configuration was selected based on a balance between *speed, hardware complexity, and scalability*.
