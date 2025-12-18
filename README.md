@@ -41,3 +41,12 @@ To study performance trade-offs, multiple adder architectures were implemented a
 
 Comparative analysis of these adders highlights the impact of carry propagation on critical path delay and overall processor performance.  
 The final ALU configuration was selected based on a balance between *speed, hardware complexity, and scalability*.
+
+
+## Verification and Testbench Strategy
+
+Functional verification of the design was performed using *Verilog testbenches* developed for both the ALU and the pipelined processor.  
+The ALU testbench validates arithmetic and logical operations across a wide range of input combinations.
+
+The pipeline testbench verifies correct instruction flow across all five stages, including the handling of data hazards and forwarding scenarios.  
+Simulation results confirm correct functionality, proper pipeline control, and stable operation under dependent instruction sequences.
