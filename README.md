@@ -18,3 +18,13 @@ The processor follows a *classical 5-stage RISC pipeline* consisting of:
 5. *Write Back (WB)* – Writes the result back to the register file  
 
 Pipeline registers separate each stage to enable *instruction-level parallelism* and improve overall throughput.
+
+## Pipeline Hazards and Data Forwarding
+
+The pipelined processor accounts for *data hazards* that arise due to instruction dependencies across pipeline stages.  
+A dedicated *hazard detection unit* monitors source and destination registers and introduces pipeline stalls when required to ensure correct execution.
+
+To minimize performance degradation caused by stalls, a *data forwarding (bypassing) unit* is implemented.  
+This unit forwards results from later pipeline stages (EX/MEM and MEM/WB) directly to the Execute stage, reducing unnecessary pipeline stalls and improving instruction throughput.
+
+The combined use of hazard detection and forwarding enables the processor to maintain correctness while achieving higher performance through effective instruction-level parallelism.
