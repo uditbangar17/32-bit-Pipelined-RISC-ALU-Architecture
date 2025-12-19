@@ -19,6 +19,17 @@ The processor follows a *classical 5-stage RISC pipeline* consisting of:
 
 Pipeline registers separate each stage to enable *instruction-level parallelism* and improve overall throughput.
 
+## Architecture Diagrams
+
+### Overall Processor Architecture
+![Overall Architecture](docs/processor_architecture.png)
+
+### 5-Stage Pipeline Datapath
+![Pipeline Datapath](docs/pipeline_datapath.png)
+
+### Hazard Detection and Data Forwarding
+![Hazard and Forwarding](docs/hazard_forwarding.png)
+
 ## Pipeline Hazards and Data Forwarding
 
 The pipelined processor accounts for *data hazards* that arise due to instruction dependencies across pipeline stages.  
