@@ -57,9 +57,9 @@ to the EX/MEM register, validating execution-stage functionality.
 
 ---
 
-## MEM/WB Stage – Write Back
+## WB Stage – Register Writeback
 
-[MEM/WB Stage](mem_wb_stage_writeback.png)
+[WB Stage](04_WB_Writeback_Data_and_Register_Update.png
 
 Verified signals:
 - Write-back register index (“mem_wb_write_reg“)
@@ -68,8 +68,8 @@ Verified signals:
 - MEM/WB pipeline register outputs
 
 Observation:  
-The correct result is selected and written back to the register file at
-the WB stage, confirming end-to-end pipeline correctness.
+The correct result is selected and written back to the destination register
+at the WB stage, confirming end-to-end pipeline correctness.
 
 ---
 
