@@ -56,6 +56,8 @@ This analysis informed the final ALU integration used in the pipelined processor
 
 ## Verification and Waveform-Based Validation
 
+Detailed waveform-based verification for each pipeline stage is providedin the “/waveforms“ directory.
+
 The processor was verified using cycle-accurate waveform analysis in ModelSim, with a focus on validating pipeline register behavior and data propagation across stages.
 
 Verification was performed stage-by-stage:
