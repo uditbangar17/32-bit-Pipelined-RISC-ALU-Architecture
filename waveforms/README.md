@@ -1,85 +1,79 @@
 # Waveform Verification
 
-This folder contains ModelSim waveform screenshots used to verify the
-functional correctness of each pipeline stage in the 32-bit 5-stage
-pipelined RISC processor.
+This directory contains ModelSim waveform screenshots used to verify the
+functional correctness of each pipeline stage of the 32-bit pipelined RISC processor.
 
-All waveforms were captured after clean compilation and simulation,
-with the clock, reset, pipeline registers, and control signals enabled.
+Each waveform corresponds to a specific pipeline stage and demonstrates
+correct signal propagation, control behavior, and data flow across pipeline registers.
 
 ---
 
-## IF Stage – Instruction Fetch
+## 01. IF Stage – Instruction Fetch
 
-[IF Stage](if_stage_instruction_fetch.png)
+[IF Stage](01_IF_Instruction_Fetch.png)
 
 Verified signals:
-- Program Counter (“pc“)
-- Instruction output (“instr“)
-- IF/ID pipeline register (“if_id_instr“)
-- Clock synchronization
+- Program Counter (PC)
+- Instruction Memory Output
+- IF/ID pipeline register
 
 Observation:  
-The PC increments correctly and the fetched instruction is latched into
-the IF/ID pipeline register on each rising clock edge.
+The PC increments correctly and instructions are fetched sequentially
+from instruction memory.
 
 ---
 
-## ID/EX Stage – Decode & Register Read
+## 02. ID/EX Stage – Decode and Register Read
 
-[ID/EX Stage](id_ex_stage_decode_register_read.png)
+[ID Stage](02_ID_EX_Decode_and_Register_Read.png)
 
 Verified signals:
-- Source registers (“rs“, “rt“)
-- Immediate value (“id_ex_imm“)
-- Control signals (“ALUSrc“, “RegWrite“)
-- ID/EX pipeline register contents
+- Source register indices
+- Register file read data
+- Immediate generation
+- Control signals latched into ID/EX register
 
 Observation:  
-Instruction fields and control signals are decoded correctly and passed
-to the Execute stage without corruption.
+Instruction fields are correctly decoded and operands are read from
+the register file.
 
 ---
 
-## EX/MEM Stage – Execute & ALU Operation
+## 03. EX/MEM Stage – ALU Execution and Forwarding
 
-[EX/MEM Stage](ex_mem_stage_alu_execution.png)
+[EX Stage](03_EX_MEM_ALU_Execution_and_Forwarding.png)
 
 Verified signals:
-- ALU operands (“ex_opA“, “ex_opB“)
-- ALU result (“ex_alu_y“)
-- ALU control select (“alu_sel“)
+- ALU operands and result
+- Forwarding control signals
 - EX/MEM pipeline register outputs
 
 Observation:  
-The ALU performs correct arithmetic operations, and results are forwarded
-to the EX/MEM register, validating execution-stage functionality.
+ALU operations execute correctly, and data forwarding resolves
+read-after-write hazards without unnecessary stalls.
 
 ---
 
-## WB Stage – Register Writeback
+## 04. WB Stage – Register Writeback
 
-[WB Stage](04_WB_Writeback_Data_and_Register_Update.png
+[WB Stage](04_WB_Writeback_Data_and_Register_Update.png)
 
 Verified signals:
-- Write-back register index (“mem_wb_write_reg“)
+- Destination register (“mem_wb_write_reg“)
 - Write-back data (“wb_write_data“)
-- Control signals (“RegWrite“, “MemToReg“)
-- MEM/WB pipeline register outputs
+- Write enable (“RegWrite“)
+- MEM/WB pipeline register
 
 Observation:  
-The correct result is selected and written back to the destination register
-at the WB stage, confirming end-to-end pipeline correctness.
+The correct result is written back to the register file on the rising
+clock edge, confirming end-to-end pipeline correctness.
 
 ---
 
 ## Summary
 
 These waveforms collectively demonstrate:
-- Correct instruction flow across all pipeline stages
-- Proper pipeline register operation
-- Accurate ALU execution and data propagation
-- Successful register write-back
-
-This waveform-based validation confirms the functional correctness of
-the pipelined processor design.
+- Correct pipeline sequencing
+- Proper control signal propagation
+- Functional hazard detection and data forwarding
+- Correct register write-back behavior
